@@ -30,8 +30,17 @@ class Router
 	 *
 	 * @return void
 	 */
-	public function add($route, $params)
+	public function add($route, $params = [])
 	{
+		// Convert the route to a regular expression: escape forward slashes
+		$route = preg_replace('/\//', '\\/', $route);
+
+		// Convert variables e.g. {controller}
+		$route = preg_replace('/\{([a-z])\}/', '(?P</1>[a-z]+)', $route);
+
+		// Add start and end delimiters, and case insensitive flag
+		$route = '/^' . $route . '$/i';
+
 		$this->routes[$route] = $params;
 	}
 
@@ -55,23 +64,25 @@ class Router
 	 */
 	public function match($url)
 	{
-		// Match the fixed URL format /controller/action
-		$reg_exp = "/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/";
-
-		if (preg_match($reg_exp, $url, $matches))
+//		// Match the fixed URL format /controller/action
+//		$reg_exp = "/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/";
+		foreach ($this->routes as $route => $params)
 		{
-			// Get named captured group values
-			$params = [];
-			foreach ($matches as $key => $match)
+			if (preg_match($route, $url, $matches))
 			{
-				if (is_string($key))
+				// Get named captured group values
+//				$params = [];
+				foreach ($matches as $key => $match)
 				{
-					$params[$key] = $match;
+					if (is_string($key))
+					{
+						$params[$key] = $match;
+					}
 				}
-			}
 
-			$this->params = $params;
-			return true;
+				$this->params = $params;
+				return true;
+			}
 		}
 		return false;
 	}
