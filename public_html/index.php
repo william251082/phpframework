@@ -5,21 +5,32 @@
  * Date: 8/20/18
  * Time: 3:52 PM
  */
+
+use Core\Router;
+
 /**
  * Front Controller
  *
  * PHP 7.2.1
  */
-
-// Require the controller class
-require '../app/controllers/Posts.php';
-
+//// Require the controller class
+//require '../App/Controllers/Posts.php';
+/**
+ * Autoloader
+ */
+spl_autoload_register(function ($class) {
+	$root = dirname(__DIR__); // get the parent directory
+	$file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+	if (is_readable($file))
+	{
+		require $root . '/' . str_replace('\\', '/', $class) . '.php';
+	}
+});
 /**
  * Routing
  */
-require '../core/Router.php';
+//require '../Core/Router.php';
 $router = new Router();
-
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
@@ -27,13 +38,11 @@ $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
 $router->add('{controller}/{action}');
 //$router->add('admin/{action}/{controller}');
 $router->add('{controller}/{id:\d+}/{action}');
-
 //// Display routing table
 //echo '<pre>';
 ////	var_dump($router->getRoutes());
 //echo htmlspecialchars(print_r($router->getRoutes(), true));
 //echo '<pre>';
-
 //// Match the requested route
 //$url = $_SERVER['QUERY_STRING'];
 //
@@ -44,5 +53,4 @@ $router->add('{controller}/{id:\d+}/{action}');
 //} else {
 //	echo "No route found for URL '$url'";
 //}
-
 $router->dispatch($_SERVER['QUERY_STRING']);

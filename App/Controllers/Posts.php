@@ -6,6 +6,8 @@
  * Time: 9:28 PM
  */
 
+namespace App\Controllers;
+
 /**
  * Posts Controller
  *
