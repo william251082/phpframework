@@ -8,12 +8,14 @@
 
 namespace App\Controllers;
 
+use Core\Controller;
+
 /**
  * Home Controller
  *
  * @package App\Controllers
  */
-class Home
+class Home extends Controller
 {
 	/**
 	 * Show the index page
