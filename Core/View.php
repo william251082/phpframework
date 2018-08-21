@@ -39,7 +39,7 @@ class View
 	/**
 	 * Render a view template using twig
 	 *
-	 * @throws 
+	 * @throws
 	 * @param string $template The template file
 	 * @param array  $args     Associative array of data to display in the view
 	 *
