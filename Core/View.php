@@ -19,10 +19,12 @@ class View
 	 *
 	 * @param string $view The view file
 	 *
-	 * @param void
+	 * @param array
 	 */
-	public static function render($view)
+	public static function render($view, $args = [])
 	{
+		extract($args, EXTR_SKIP);
+
 		$file = "../App/Views/$view"; // Relative to Core directory
 
 		if (is_readable($file))
