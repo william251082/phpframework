@@ -18,11 +18,32 @@ use Core\Controller;
 class Home extends Controller
 {
 	/**
+	 * Before filter - called before an action method
+	 *
+	 * @return void
+	 */
+	protected function before()
+	{
+		echo " (before) ";
+		return false;
+	}
+
+	/**
+	 * After filter - called after an action method
+	 *
+	 * @return void
+	 */
+	protected function after()
+	{
+		echo " (after) ";
+	}
+
+	/**
 	 * Show the index page
 	 *
 	 * @return void
 	 */
-	public function index()
+	public function indexAction()
 	{
 		echo 'Hello from the index action in the Home controller';
 	}

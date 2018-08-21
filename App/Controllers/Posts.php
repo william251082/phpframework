@@ -22,7 +22,7 @@ class Posts extends Controller
 	 *
 	 * @return void
 	 */
-	public function index()
+	public function indexAction()
 	{
 		echo 'Hello from the index action in the Post Controller!';
 		echo '<p>Query string parameters: <pre>' .
@@ -34,7 +34,7 @@ class Posts extends Controller
 	 *
 	 * @return void
 	 */
-	public function addNew()
+	public function addNewAction()
 	{
 		echo 'Hello from the addNew action in the Post Controller!';
 	}
@@ -44,7 +44,7 @@ class Posts extends Controller
 	 *
 	 * @return void
 	 */
-	public function edit()
+	public function editAction()
 	{
 		echo 'Hello from the edit action in the Posts controller!';
 		echo '<p>Route parameters: <pre>' .
