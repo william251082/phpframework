@@ -39,6 +39,7 @@ class View
 	/**
 	 * Render a view template using twig
 	 *
+	 * @throws 
 	 * @param string $template The template file
 	 * @param array  $args     Associative array of data to display in the view
 	 *
@@ -55,9 +56,6 @@ class View
 			$loader = new \Twig_Loader_Filesystem(dirname(__DIR__) . '/App/Views');
 			$twig   = new \Twig_Environment($loader);
 		}
-		else
-		{
 			echo $twig->render($template, $args);
-		}
 	}
 }
