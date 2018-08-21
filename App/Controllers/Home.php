@@ -19,6 +19,24 @@ use Core\View;
 class Home extends Controller
 {
 	/**
+	 * Show the index page
+	 *
+	 * @return void
+	 */
+	public function indexAction()
+	{
+//		echo 'Hello from the index action in the Home controller';
+//		View::render('Home/index.html', [
+//			'name' => 'Will',
+//			'colours' => ['red', 'green', 'blue']
+//		]);
+		View::renderTemplate('Home/index.html', [
+			'name'    => 'Will',
+			'colours' => ['red', 'green', 'blue']
+		]);
+	}
+
+	/**
 	 * Before filter - called before an action method
 	 *
 	 * @return void
@@ -37,19 +55,5 @@ class Home extends Controller
 	protected function after()
 	{
 //		echo " (after) ";
-	}
-
-	/**
-	 * Show the index page
-	 *
-	 * @return void
-	 */
-	public function indexAction()
-	{
-//		echo 'Hello from the index action in the Home controller';
-		View::render('Home/index.php', [
-			'name' => 'Will',
-			'colours' => ['red', 'green', 'blue']
-		]);
 	}
 }

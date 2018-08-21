@@ -13,7 +13,10 @@ use Core\Router;
  *
  * PHP 7.2.1
  */
-
+/**
+ * Twig
+ */
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 /**
  * Autoloader
  */
@@ -25,7 +28,6 @@ spl_autoload_register(function ($class) {
 		require $root . '/' . str_replace('\\', '/', $class) . '.php';
 	}
 });
-
 /**
  * Routing
  */
@@ -37,5 +39,4 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => "Admin"]);
-
 $router->dispatch($_SERVER['QUERY_STRING']);
