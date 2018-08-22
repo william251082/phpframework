@@ -8,6 +8,8 @@
 
 namespace Core;
 
+use Exception;
+
 /**
  * Base Controller
  */
@@ -34,7 +36,7 @@ abstract class Controller
 	 * called on an object of this class. Used to execute before and after
 	 * filter methods on action methods. Action methods need to be named
 	 * with an "Action" suffix, e.g. indexAction, showAction etc.
-	 *
+	 * @throws Exception
 	 * @param string $name  Method name
 	 * @param array $args Arguments passed to the method
 	 *
@@ -51,6 +53,12 @@ abstract class Controller
 				call_user_func_array([$this, $method], $args);
 				$this->after();
 			}
+		}
+		else
+			{
+			//echo "Method $method not found in controller " . get_class($this);
+			throw new Exception("Method $method not found in controller " .
+				get_class($this));
 		}
 	}
 

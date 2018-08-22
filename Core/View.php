@@ -8,6 +8,8 @@
 
 namespace Core;
 
+use Exception;
+
 /**
  * View
  *
@@ -16,6 +18,7 @@ class View
 {
 	/**
 	 * Render a view file
+	 * @throws  Exception
 	 *
 	 * @param string $view The view file
 	 *
@@ -24,7 +27,6 @@ class View
 	public static function render($view, $args = [])
 	{
 		extract($args, EXTR_SKIP);
-
 		$file = "../App/Views/$view"; // Relative to Core directory
 		if (is_readable($file))
 		{
@@ -32,7 +34,8 @@ class View
 		}
 		else
 		{
-			echo "$file not found";
+			//echo "$file not found";
+			throw new Exception("$file not found");
 		}
 	}
 
@@ -40,6 +43,7 @@ class View
 	 * Render a view template using twig
 	 *
 	 * @throws
+	 *
 	 * @param string $template The template file
 	 * @param array  $args     Associative array of data to display in the view
 	 *
@@ -49,13 +53,12 @@ class View
 	{
 		// instantiate the twig object once
 		static $twig = null;
-
 		if ($twig === null)
 		{
 //			$loader = new \Twig_Loader_Filesystem( '../App/Views');
 			$loader = new \Twig_Loader_Filesystem(dirname(__DIR__) . '/App/Views');
 			$twig   = new \Twig_Environment($loader);
 		}
-			echo $twig->render($template, $args);
+		echo $twig->render($template, $args);
 	}
 }
