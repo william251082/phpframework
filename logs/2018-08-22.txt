@@ -1,0 +1,4 @@
+[22-Aug-2018 05:26:16 UTC] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Users/williamdelrosario/Sites/mvc/public_html/index.php(40): Core\Router->dispatch('fafvfa')
+#1 {main}
+Thrown in '/Users/williamdelrosario/Sites/mvc/Core/Router.php' on line 114
