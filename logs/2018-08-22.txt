@@ -2,3 +2,20 @@
 Stack trace: #0 /Users/williamdelrosario/Sites/mvc/public_html/index.php(40): Core\Router->dispatch('fafvfa')
 #1 {main}
 Thrown in '/Users/williamdelrosario/Sites/mvc/Core/Router.php' on line 114
+[22-Aug-2018 05:46:20 UTC] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /Users/williamdelrosario/Sites/mvc/public_html/index.php(40): Core\Router->dispatch('40')
+#1 {main}
+Thrown in '/Users/williamdelrosario/Sites/mvc/Core/Router.php' on line 114
+[22-Aug-2018 05:47:20 UTC] Uncaught exception: 'Twig_Error_Loader' with message 'Unable to find template "Home/inde.html" (looked into: /Users/williamdelrosario/Sites/mvc/App/Views).'
+Stack trace: #0 /Users/williamdelrosario/Sites/mvc/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('Home/inde.html')
+#1 /Users/williamdelrosario/Sites/mvc/vendor/twig/twig/lib/Twig/Environment.php(270): Twig_Loader_Filesystem->getCacheKey('Home/inde.html')
+#2 /Users/williamdelrosario/Sites/mvc/vendor/twig/twig/lib/Twig/Environment.php(350): Twig_Environment->getTemplateClass('Home/inde.html')
+#3 /Users/williamdelrosario/Sites/mvc/vendor/twig/twig/lib/Twig/Environment.php(289): Twig_Environment->loadTemplate('Home/inde.html')
+#4 /Users/williamdelrosario/Sites/mvc/Core/View.php(62): Twig_Environment->render('Home/inde.html', Array)
+#5 /Users/williamdelrosario/Sites/mvc/App/Controllers/Home.php(55): Core\View::renderTemplate('Home/inde.html', Array)
+#6 [internal function]: App\Controllers\Home->indexAction()
+#7 /Users/williamdelrosario/Sites/mvc/Core/Controller.php(53): call_user_func_array(Array, Array)
+#8 /Users/williamdelrosario/Sites/mvc/Core/Router.php(96): Core\Controller->__call('index', Array)
+#9 /Users/williamdelrosario/Sites/mvc/public_html/index.php(40): Core\Router->dispatch('')
+#10 {main}
+Thrown in '/Users/williamdelrosario/Sites/mvc/vendor/twig/twig/lib/Twig/Loader/Filesystem.php' on line 226
