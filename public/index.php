@@ -20,6 +20,11 @@ use Core\Router;
 require '../vendor/autoload.php';
 
 /**
+ * Twig
+ */
+Twig_Autoloader::register();
+
+/**
  * Error and Exception handling
  */
 error_reporting(E_ALL);
@@ -37,4 +42,7 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => "Admin"]);
-$router->dispatch($_SERVER['QUERY_STRING']);
+
+$query_string = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : null;
+
+$router->dispatch($query_string);
