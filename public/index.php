@@ -44,6 +44,4 @@ $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => "Admin"]);
 
-$query_string = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : null;
-
-$router->dispatch($query_string);
+$router->dispatch($_SERVER['QUERY_STRING'] ?? '');
